@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
+import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store';
 import routes from './routes';
@@ -16,4 +16,4 @@ ReactDOM.render((
             </Router>
         </Provider>
     ),
-document.querySelector('#app'));
+    document.querySelector('#app'));
