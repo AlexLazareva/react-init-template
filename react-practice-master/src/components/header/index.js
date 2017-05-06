@@ -19,7 +19,7 @@ export default class Header extends React.Component {
                             <Link to='/contact' >Contact</Link>
                         </li>
                         <li>
-                            <Link to='/contacts-f' >Error page</Link>
+                            <Link to='/error' >Error page</Link>
                         </li>
                     </ul>
                 </div>
