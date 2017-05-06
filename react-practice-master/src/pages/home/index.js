@@ -1,3 +1,2 @@
-/**
- * Created by Alex_Lazareva on 06.05.2017.
- */
+export HomePage from './home';
+export HomeRoutes from './routes';
