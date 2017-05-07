@@ -8,7 +8,13 @@ export default class HomePage extends React.Component {
         super(props);
 
         this.state = {
-            todoName: ''
+            todoName: '',
+            todos: [
+                {
+                    id: 1,
+                    name: 'Item 1'
+                }
+            ]
         };
     }
 
@@ -17,17 +23,34 @@ export default class HomePage extends React.Component {
         this.setState ({ todoName });
     }
 
+    addTodo() {
+        const id = this.state.todos[this.state.todos.length - 1].id + 1;
+        const name = this.state.todoName;
+
+        const todos = this.state.todos;
+        todos.push({id, name});
+
+        this.setState({ todos });
+        this.setState({ todoName: '' });
+    }
+
+    renderTodos(item, idx) {
+        return (
+            <li key={idx}>{item.name}</li>
+        );
+    }
+
     render() {
-        const { todoName } = this.state;
+        const { todoName, todos } = this.state;
         return (
             <div className='row-fluid b-home'>
                 <div className='col-xs-12'>
                     <ul>
-                        <li>Item 1</li>
+                        { todos.map(this.renderTodos.bind(this)) }
                     </ul>
                     <div className='col-xs-4'>
                         <input type='text' className='form-control' value={ todoName } onChange={ this.inputOnChange.bind(this) }/>
-                        <button className='btn btn-primary'>Add todo</button>
+                        <button className='btn btn-primary' onClick={ this.addTodo.bind(this) }>Add todo</button>
                     </div>
                 </div>
             </div>
