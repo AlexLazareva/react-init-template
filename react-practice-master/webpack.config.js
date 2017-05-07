@@ -37,7 +37,7 @@ module.exports = {
     resolveLoader: {
         modulesDirectories: ['node_modules', 'bower_components'],
         moduleTemplates: ['*-loader', '*'],
-        extensions: ['', '.js']
+        extensions: ['', '.js', '.css']
     },
     devServer: {
         host: 'localhost',
@@ -61,6 +61,10 @@ module.exports = {
             {
                 test: /\.(png|jpg|svg|gif)$/,
                 loader: 'file?name=img/[path][name].[ext]'
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader'
             },
             {
                 test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
