@@ -35,6 +35,7 @@ export default class Input extends React.Component {
                     type='text'
                     value={ this.state.value }
                     onChange={ this.handleChange }
+                    className='form-control'
                 />
                 { this.props.error ? <span className='help-block'>{ this.props.error }</span> : null }
             </div>

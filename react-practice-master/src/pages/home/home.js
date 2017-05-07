@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from '../../components/ui/input/index';
+import { bindAll } from 'lodash';
 import './styles.css';
 
 export default class HomePage extends React.Component {
@@ -17,6 +18,8 @@ export default class HomePage extends React.Component {
                 }
             ]
         };
+
+        bindAll(this, ['renderTodos', 'inputOnChange', 'addTodo']);
     }
 
     inputOnChange(value) {
@@ -48,11 +51,14 @@ export default class HomePage extends React.Component {
             <div className='row-fluid b-home'>
                 <div className='col-xs-12'>
                     <ul>
-                        { todos.map(this.renderTodos.bind(this)) }
+                        { todos.map(this.renderTodos) }
                     </ul>
                     <div className='col-xs-4'>
-                        <Input value={ '' } onChange={ this.inputOnChange.bind(this) } />
-                        <button className='btn btn-primary' onClick={ this.addTodo.bind(this) }>Add todo</button>
+                        <Input
+                            value={ '' }
+                            onChange={ this.inputOnChange }
+                        />
+                        <button className='btn btn-primary' onClick={ this.addTodo }>Add todo</button>
                     </div>
                 </div>
             </div>
