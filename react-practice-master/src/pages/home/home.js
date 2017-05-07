@@ -1,4 +1,5 @@
 import React from 'react';
+import Input from '../../components/ui/input/index';
 import './styles.css';
 
 export default class HomePage extends React.Component {
@@ -18,12 +19,13 @@ export default class HomePage extends React.Component {
         };
     }
 
-    inputOnChange(event) {
-        const todoName = event.target.value;
-        this.setState ({ todoName });
+    inputOnChange(value) {
+        this.setState ({ todoName: value });
     }
 
     addTodo() {
+        if (this.state.todoName === '') return;
+
         const id = this.state.todos[this.state.todos.length - 1].id + 1;
         const name = this.state.todoName;
 
@@ -49,7 +51,7 @@ export default class HomePage extends React.Component {
                         { todos.map(this.renderTodos.bind(this)) }
                     </ul>
                     <div className='col-xs-4'>
-                        <input type='text' className='form-control' value={ todoName } onChange={ this.inputOnChange.bind(this) }/>
+                        <Input value={ '' } onChange={ this.inputOnChange.bind(this) } />
                         <button className='btn btn-primary' onClick={ this.addTodo.bind(this) }>Add todo</button>
                     </div>
                 </div>
