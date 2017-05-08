@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react';
 import Input from '../../components/ui/input/index';
 import { bindAll } from 'lodash';
 import { connect } from 'react-redux';
-import { addTodo } from './actions';
+import classnames from 'classnames';
+import { addTodo, likeTodo } from './actions';
 import './styles.css';
 
 class HomePage extends React.Component {
@@ -36,18 +37,29 @@ class HomePage extends React.Component {
     }
 
     renderTodos(item, idx) {
+        const todoClasses = classnames('b-home-todo', {
+            'is-liked': item.liked
+        });
+        const btnClasses = classnames('btn like-btn', {
+            'active': item.liked
+        });
         return (
             <li key={idx}>
-                <span className='b-home-todo'>{item.name}</span>
+                <span className={ todoClasses }>{item.name}</span>
                 <button className='btn'>
                     <i className='glyphicon glyphicon-remove' />
                 </button>
-                <button className='btn'>
+                <button className={ btnClasses } onClick={this.likeTodo.bind(this, item)}>
                     <i className='glyphicon glyphicon-heart' />
                 </button>
             </li>
         );
     }
+
+    likeTodo(todo) {
+        this.props.dispatch( likeTodo(todo) );
+    }
+
 
     render() {
         const { todoName } = this.state;
