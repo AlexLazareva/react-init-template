@@ -3,7 +3,7 @@ import Input from '../../components/ui/input/index';
 import { bindAll } from 'lodash';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { addTodo, likeTodo } from './actions';
+import { addTodo, likeTodo, deleteTodo } from './actions';
 import './styles.css';
 
 class HomePage extends React.Component {
@@ -47,7 +47,7 @@ class HomePage extends React.Component {
             <li key={idx}>
                 <span className={ todoClasses }>{item.name}</span>
                 <button className='btn'>
-                    <i className='glyphicon glyphicon-remove' />
+                    <i className='glyphicon glyphicon-remove' onClick={this.deleteTodo.bind(this, item)} />
                 </button>
                 <button className={ btnClasses } onClick={this.likeTodo.bind(this, item)}>
                     <i className='glyphicon glyphicon-heart' />
@@ -56,10 +56,13 @@ class HomePage extends React.Component {
         );
     }
 
+    deleteTodo(todo) {
+        this.props.dispatch( deleteTodo(todo) );
+    }
+
     likeTodo(todo) {
         this.props.dispatch( likeTodo(todo) );
     }
-
 
     render() {
         const { todoName } = this.state;
