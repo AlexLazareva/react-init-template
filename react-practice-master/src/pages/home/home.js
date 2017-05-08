@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Input from '../../components/ui/input/index';
 import { bindAll } from 'lodash';
-import { connect } from 'redux';
+import { connect } from 'react-redux';
+import { addTodo } from './actions';
 import './styles.css';
 
 class HomePage extends React.Component {
+
     static path = '/';
+    static propTypes = {
+        home: PropTypes.object.isRequired,
+        dispatch: PropTypes.func.isRequired
+    };
 
     constructor(props) {
         super(props);
@@ -22,19 +28,11 @@ class HomePage extends React.Component {
     }
 
     addTodo() {
-        if (this.state.todoName === '') {
-            this.setState({error: 'Поле не должно быть пустым'});
-            return;
-        }
-
-        const id = this.state.todos[this.state.todos.length - 1].id + 1;
+        const { todos } = this.props.home;
+        const id = todos[todos.length - 1].id + 1;
         const name = this.state.todoName;
-
-        const todos = this.state.todos;
-        todos.push({id, name});
-
-        this.setState({ todos });
-        this.setState({ todoName: '', error: '' });
+        this.props.dispatch( addTodo(id, name) );
+        this.setState({ todoName: '' });
     }
 
     renderTodos(item, idx) {
@@ -44,8 +42,8 @@ class HomePage extends React.Component {
     }
 
     render() {
-        console.log('Home state: ', this.props)
         const { todoName } = this.state;
+        const { todos, error } = this.props.home;
         return (
             <div className='row-fluid b-home'>
                 <div className='col-xs-12'>
@@ -56,7 +54,7 @@ class HomePage extends React.Component {
                         <Input
                             value={ todoName }
                             onChange={ this.inputOnChange }
-                            error = { this.state.error }
+                            error = { error }
                         />
                         <button className='btn btn-primary' onClick={ this.addTodo }>Add todo</button>
                     </div>

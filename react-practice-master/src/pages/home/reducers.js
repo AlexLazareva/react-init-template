@@ -1,5 +1,4 @@
 import { ADD_TODO } from './actions';
-export { HomeReducer } from './reducers';
 
 const initialState = {
     todos: [
@@ -13,7 +12,14 @@ const initialState = {
 function homeReducer(state = initialState, action) {
    switch (action.type) {
        case ADD_TODO:
-           return state;
+           let todos = state.todos;
+           if (!action.error) {
+               todos.push({id: action.id, name: action.name});
+           }
+           return Object.assign({}, state, {
+               error: action.error,
+               todos
+           });
        default:
            return state;
    }
