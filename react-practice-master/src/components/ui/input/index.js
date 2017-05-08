@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import classnames from 'classnames';
 
 export default class Input extends React.Component {
+
     static propTypes = {
         value: PropTypes.string.isRequired,
         onChange: PropTypes.func.isRequired,
@@ -21,7 +22,7 @@ export default class Input extends React.Component {
     handleChange(event) {
         const { value }  = event.target;
         this.props.onChange(value);
-        this.setState({value});
+        this.setState({ value });
     }
 
     render() {
@@ -29,11 +30,14 @@ export default class Input extends React.Component {
             'form-group': true,
             'has-error': this.props.error ? true : false
         });
+
+        const { value } = this.props;
+
         return (
             <div className={ divClasses }>
                 <input
                     type='text'
-                    value={ this.state.value }
+                    value={ value }
                     onChange={ this.handleChange }
                     className='form-control'
                 />

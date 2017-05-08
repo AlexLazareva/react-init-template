@@ -23,11 +23,14 @@ export default class HomePage extends React.Component {
     }
 
     inputOnChange(value) {
-        this.setState ({ todoName: value });
+        this.setState({ todoName: value });
     }
 
     addTodo() {
-        if (this.state.todoName === '') return;
+        if (this.state.todoName === '') {
+            this.setState({error: 'Поле не должно быть пустым'});
+            return;
+        }
 
         const id = this.state.todos[this.state.todos.length - 1].id + 1;
         const name = this.state.todoName;
@@ -36,7 +39,7 @@ export default class HomePage extends React.Component {
         todos.push({id, name});
 
         this.setState({ todos });
-        this.setState({ todoName: '' });
+        this.setState({ todoName: '', error: '' });
     }
 
     renderTodos(item, idx) {
@@ -46,7 +49,7 @@ export default class HomePage extends React.Component {
     }
 
     render() {
-        const { todoName, todos } = this.state;
+        const { todoName, todos, error } = this.state;
         return (
             <div className='row-fluid b-home'>
                 <div className='col-xs-12'>
@@ -55,8 +58,9 @@ export default class HomePage extends React.Component {
                     </ul>
                     <div className='col-xs-4'>
                         <Input
-                            value={ '' }
+                            value={ todoName }
                             onChange={ this.inputOnChange }
+                            error = { error }
                         />
                         <button className='btn btn-primary' onClick={ this.addTodo }>Add todo</button>
                     </div>
