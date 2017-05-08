@@ -37,7 +37,15 @@ class HomePage extends React.Component {
 
     renderTodos(item, idx) {
         return (
-            <li key={idx}>{item.name}</li>
+            <li key={idx}>
+                <span className='b-home-todo'>{item.name}</span>
+                <button className='btn'>
+                    <i className='glyphicon glyphicon-remove' />
+                </button>
+                <button className='btn'>
+                    <i className='glyphicon glyphicon-heart' />
+                </button>
+            </li>
         );
     }
 
@@ -56,7 +64,7 @@ class HomePage extends React.Component {
                             onChange={ this.inputOnChange }
                             error = { error }
                         />
-                        <button className='btn btn-primary' onClick={ this.addTodo }>Add todo</button>
+                        <button className='btn btn-primary b-home-submit' onClick={ this.addTodo }>Add todo</button>
                     </div>
                 </div>
             </div>
