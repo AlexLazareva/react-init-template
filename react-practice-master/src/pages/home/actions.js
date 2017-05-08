@@ -13,8 +13,9 @@ export function addTodo(id, name) {
 }
 
 export function likeTodo(todo) {
+    const liked = !todo.liked;
     return {
         type: LIKE_TODO,
-        todo
+        todo, liked
     };
 }

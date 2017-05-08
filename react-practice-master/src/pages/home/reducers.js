@@ -24,7 +24,7 @@ function homeReducer(state = initialState, action) {
             });
         case LIKE_TODO:
             const idx = state.todos.findIndex(todo => todo.id === action.todo.id);
-            state.todos[idx].liked = true;
+            state.todos[idx].liked = action.liked;
             return Object.assign({}, state, {todos: state.todos});
         default:
             return state;
