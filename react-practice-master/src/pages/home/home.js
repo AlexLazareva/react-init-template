@@ -1,22 +1,17 @@
 import React from 'react';
 import Input from '../../components/ui/input/index';
 import { bindAll } from 'lodash';
+import { connect } from 'redux';
 import './styles.css';
 
-export default class HomePage extends React.Component {
+class HomePage extends React.Component {
     static path = '/';
 
     constructor(props) {
         super(props);
 
         this.state = {
-            todoName: '',
-            todos: [
-                {
-                    id: 1,
-                    name: 'Item 1'
-                }
-            ]
+            todoName: ''
         };
 
         bindAll(this, ['renderTodos', 'inputOnChange', 'addTodo']);
@@ -49,7 +44,8 @@ export default class HomePage extends React.Component {
     }
 
     render() {
-        const { todoName, todos, error } = this.state;
+        console.log('Home state: ', this.props)
+        const { todoName } = this.state;
         return (
             <div className='row-fluid b-home'>
                 <div className='col-xs-12'>
@@ -60,7 +56,7 @@ export default class HomePage extends React.Component {
                         <Input
                             value={ todoName }
                             onChange={ this.inputOnChange }
-                            error = { error }
+                            error = { this.state.error }
                         />
                         <button className='btn btn-primary' onClick={ this.addTodo }>Add todo</button>
                     </div>
@@ -69,3 +65,11 @@ export default class HomePage extends React.Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        home: state.home
+    };
+}
+
+export default connect(mapStateToProps)(HomePage);
