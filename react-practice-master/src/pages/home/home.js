@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
-import Input from '../../components/ui/input/index';
 import { bindAll } from 'lodash';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
+import { LS } from '../../utils/index';
+import Input from '../../components/ui/input/index';
 import { addTodo, likeTodo, deleteTodo } from './actions';
 import './styles.css';
 
@@ -84,6 +85,10 @@ class HomePage extends React.Component {
                 </div>
             </div>
         );
+    }
+
+    componentWillUnmount(){
+        LS.set('todos', this.props.home.todos);
     }
 }
 
