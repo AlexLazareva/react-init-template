@@ -1,4 +1,4 @@
-import { ADD_TODO, LIKE_TODO, DELETE_TODO } from './actions';
+import { ADD_TODO, LIKE_TODO, DELETE_TODO, GET_TODOS } from './actions';
 
 const initialState = {
     todos: [
@@ -29,6 +29,10 @@ function homeReducer(state = initialState, action) {
         case DELETE_TODO:
             const filterTodos = state.todos.filter(todo => todo.id !== action.todo.id);
             return Object.assign({}, state, { todos: filterTodos });
+        case GET_TODOS:
+            return Object.assign({}, state, {
+                todos: action.todos
+            });
         default:
             return state;
     }

@@ -1,6 +1,10 @@
+import { LS, delay } from '../../utils/localstorage';
+
 export const ADD_TODO = 'ADD_TODO';
 export const LIKE_TODO = 'LIKE_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
+export const GET_TODOS = 'GET_TODOS';
+
 
 export function addTodo(id, name) {
     let error = '';
@@ -25,5 +29,17 @@ export function deleteTodo(todo) {
     return {
         type: DELETE_TODO,
         todo
+    };
+}
+
+export function getTodos() {
+    const todos = LS.get('todos');
+    return (dispatch) => {
+        delay(2000).then(() => {
+            dispatch({
+                type: GET_TODOS,
+                todos
+            });
+        });
     };
 }

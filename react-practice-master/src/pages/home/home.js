@@ -7,7 +7,8 @@ import Input from '../../components/ui/input/index';
 import {
     addTodo,
     likeTodo,
-    deleteTodo
+    deleteTodo,
+    getTodos
 } from './actions';
 import './styles.css';
 
@@ -27,6 +28,10 @@ class HomePage extends React.Component {
         };
 
         bindAll(this, ['renderTodos', 'inputOnChange', 'addTodo']);
+    }
+
+    componentWillMount(){
+        this.props.dispatch (getTodos());
     }
 
     inputOnChange(value) {
