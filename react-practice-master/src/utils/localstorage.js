@@ -1,7 +1,8 @@
 import config from '../config.js';
 
-export default class LS {
 
+export default class LS {
+    
     static get(field) {
         if (LS._isExists()) {
             const data = JSON.parse(localStorage.getItem(config.localStorage.name));
@@ -11,6 +12,7 @@ export default class LS {
 
             return undefined;
         }
+
         return undefined;
     }
 
@@ -18,17 +20,21 @@ export default class LS {
         let dataToStorage = {};
 
         if (field) {
-            dataToStorage = LS.get();
+            dataToStorage = LS.get(); 
             if (!dataToStorage) dataToStorage = {};
-            dataToStorage [ field ] = data;
-
+            dataToStorage[ field ] = data;
         } else {
             dataToStorage = data;
         }
 
         localStorage.setItem(config.localStorage.name, JSON.stringify(dataToStorage))
     }
+
     static _isExists() {
         return localStorage.getItem(config.localStorage.name) ? true : false;
     }
+
+
 }
+
+

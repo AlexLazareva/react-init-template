@@ -4,6 +4,6 @@ import ContactPage from './contact';
 
 export default (
     <Route>
-        <Route component={ ContactPage } path={ContactPage.path}/>
+        <Route component={ ContactPage } path={ ContactPage.path } />
     </Route>
 );
