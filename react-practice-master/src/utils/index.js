@@ -1,3 +1,3 @@
 export DevTools from './devtools';
-export LocalStorageManager from './localstorage';
+export LS from './localstorage';
 export delay from './delay';
