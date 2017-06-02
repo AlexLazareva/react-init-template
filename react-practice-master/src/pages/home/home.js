@@ -10,7 +10,7 @@ import {
     deleteTodo,
     getTodos
 } from './actions';
-import './styles.css';
+import './styles.less';
 
 class HomePage extends React.Component {
 

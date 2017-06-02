@@ -37,7 +37,7 @@ module.exports = {
     resolveLoader: {
         modulesDirectories: ['node_modules', 'bower_components'],
         moduleTemplates: ['*-loader', '*'],
-        extensions: ['', '.js', '.css']
+        extensions: ['', '.js']
     },
     devServer: {
         host: 'localhost',
@@ -59,12 +59,15 @@ module.exports = {
                 plugins: ['transform-runtime']
             },
             {
-                test: /\.(png|jpg|svg|gif)$/,
-                loader: 'file?name=img/[path][name].[ext]'
+                test: /\.less$/,
+                loader: 'style' +
+                '!css?sourceMap' +
+                '!autoprefixer-loader?browsers=last 2 version' +
+                '!less?sourceMap=source-map-less-inline'
             },
             {
-                test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                test: /\.(png|jpg|svg|gif)$/,
+                loader: 'file?name=img/[path][name].[ext]'
             },
             {
                 test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
