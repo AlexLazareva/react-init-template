@@ -1,3 +1,5 @@
+import { LS, delay } from '../../utils/index';
+
 export const ADD_TODO = 'ADD_TODO';
 export const LIKE_TODO = 'LIKE_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
@@ -31,7 +33,14 @@ export function deleteTodo(todo) {
 }
 
 export function getTodos() {
-    return {
-        type: GET_TODOS
+    const todos = LS.get('todos');
+
+    return (dispatch) => {
+        delay(2000).then(() => {
+            dispatch({
+                type: GET_TODOS,
+                todos
+            });
+        });
     };
 }
