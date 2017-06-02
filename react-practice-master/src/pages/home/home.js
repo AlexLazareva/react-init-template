@@ -1,21 +1,12 @@
 import React, { PropTypes } from 'react';
+import Input from '../../components/ui/input/index';
 import { bindAll } from 'lodash';
 import { connect } from 'react-redux';
-import { 
-    addTodo, 
-    likeTodo, 
-    deleteTodo, 
-    getTodos,
-    saveTodos
-} from './actions';
-
-import Input from '../../components/ui/input/index';
+import { addTodo, likeTodo, deleteTodo } from './actions';
 import classnames from 'classnames';
-import { LS } from '../../utils/index';
-
 import './styles.less';
 
-class HomePage extends React.Component{
+class HomePage extends React.Component {
     
     static path = '/';
     static propTypes = {
@@ -31,10 +22,6 @@ class HomePage extends React.Component{
         };
 
         bindAll(this, ['renderTodos', 'inputOnChange', 'addTodo']);
-    }
-    
-    componentWillMount() {
-        this.props.dispatch( getTodos() );
     }
 
     inputOnChange(value) {
@@ -76,15 +63,11 @@ class HomePage extends React.Component{
     render() {
         const { todoName } = this.state;
         const { todos, error } = this.props.home;
-        LS.set('todos', todos);
         return (
             <div className='row-fluid b-home'>
                 <div className='col-xs-12'>
                     <ul>
-                        {
-                            todos.length === 0 ? <Loader /> :
-                            todos.map(this.renderTodos) 
-                        }
+                        { todos.map(this.renderTodos) }
                     </ul>
                     <div className='col-xs-4'>
                         <Input
