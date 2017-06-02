@@ -1,8 +1,8 @@
 import config from '../config';
 
-export default class LocalStorageManager {
+export default class LS {
     static get(field) {
-        if (this.__isExists()) {
+        if (LS.__isExists()) {
             const data = JSON.parse(localStorage.getItem(config.localStorage.name));
 
             if (!field) return data;
@@ -17,7 +17,7 @@ export default class LocalStorageManager {
         let dataToStorage = {};
 
         if (field) {
-            dataToStorage = this.get();
+            dataToStorage = LS.get();
             if (!dataToStorage) dataToStorage = {};
             dataToStorage[ field ] = data;
         } else {
