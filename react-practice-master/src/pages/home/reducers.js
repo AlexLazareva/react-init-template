@@ -1,13 +1,7 @@
 import { ADD_TODO, LIKE_TODO, DELETE_TODO, GET_TODOS } from './actions';
 
 const initialState = {
-    todos: [
-        {
-            id: 1,
-            name: 'Todo 1',
-            liked: false
-        }
-    ],
+    todos: [],
     error: ''
 };
 
