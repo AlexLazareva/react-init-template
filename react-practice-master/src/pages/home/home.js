@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { bindAll } from 'lodash';
 import { connect } from 'react-redux';
-import { addTodo, likeTodo, deleteTodo } from './actions';
+import { addTodo, likeTodo, deleteTodo, getTodos } from './actions';
 import Input from '../../components/ui/input/index';
 import { LS } from '../../utils/index';
 import classnames from 'classnames';
@@ -23,6 +23,10 @@ class HomePage extends React.Component {
         };
 
         bindAll(this, ['renderTodos', 'inputOnChange', 'addTodo']);
+    }
+
+    componentWillMount() {
+        this.props.dispatch(getTodos() );
     }
 
     inputOnChange(value) {
