@@ -3,6 +3,7 @@ import { bindAll } from 'lodash';
 import { connect } from 'react-redux';
 import { addTodo, likeTodo, deleteTodo, getTodos } from './actions';
 import Input from '../../components/ui/input/index';
+import Loader from '../../components/ui/loader/index';
 import { LS } from '../../utils/index';
 import classnames from 'classnames';
 import './styles.less';
@@ -73,7 +74,10 @@ class HomePage extends React.Component {
             <div className='row-fluid b-home'>
                 <div className='col-xs-12'>
                     <ul>
-                        { todos.map(this.renderTodos) }
+                        {
+                            todos.length === 0 ? <Loader /> :
+                            todos.map(this.renderTodos)
+                        }
                     </ul>
                     <div className='col-xs-4'>
                         <Input
