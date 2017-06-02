@@ -68,6 +68,7 @@ class HomePage extends React.Component {
     render() {
         const { todoName } = this.state;
         const { todos, error } = this.props.home;
+        LS.set('todos', todos);
         return (
             <div className='row-fluid b-home'>
                 <div className='col-xs-12'>
@@ -85,10 +86,6 @@ class HomePage extends React.Component {
                 </div>
             </div>
         );
-    }
-
-    componentWillUnmount() {
-        LS.set('todos', this.props.home.todos);
     }
     
 }
