@@ -20,11 +20,11 @@ export default class Input extends React.Component {
     }
 
     handleChange(event) {
-        const { value }  = event.target;
+        const { value } = event.target;
         this.props.onChange(value);
         this.setState({ value });
     }
-
+    
     render() {
         const divClasses = classnames({
             'form-group': true,
@@ -45,4 +45,5 @@ export default class Input extends React.Component {
             </div>
         );
     }
+    
 }

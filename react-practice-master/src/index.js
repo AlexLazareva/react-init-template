@@ -10,10 +10,10 @@ const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render((
-        <Provider store={ store }>
-            <Router history={ history }>
-                { routes }
-            </Router>
-        </Provider>
-    ),
-    document.querySelector('#app'));
+    <Provider store={ store }>
+        <Router history={ history }>
+            { routes }
+        </Router>
+    </Provider>
+),
+document.querySelector('#app'));

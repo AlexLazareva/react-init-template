@@ -4,6 +4,6 @@ import HomePage from './home';
 
 export default (
     <Route>
-        <Route component={ HomePage } path={HomePage.path}/>
+        <Route component={ HomePage } path={ HomePage.path } />
     </Route>
 );
