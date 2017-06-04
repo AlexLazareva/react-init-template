@@ -1,2 +1,2 @@
 # react-init-template
-React template
+Empty React template and Todo Application
