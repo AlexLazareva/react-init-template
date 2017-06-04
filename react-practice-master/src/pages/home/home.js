@@ -24,6 +24,7 @@ class HomePage extends React.Component {
         };
 
         bindAll(this, ['renderTodos', 'inputOnChange', 'addTodo']);
+
         this.props.dispatch(getTodos() );
     }
 
@@ -69,10 +70,10 @@ class HomePage extends React.Component {
                 <div className='col-xs-12'>
                     <ul>
                         { isLoading
-                                ? <Loader />
-                                : todos.length !== 0
-                                    ? todos.map(this.renderTodos)
-                                    : 'Элементов нет'
+                            ? <Loader />
+                            : todos.length !== 0
+                                ? todos.map(this.renderTodos)
+                                : 'Элементов нет'
                         }
                     </ul>
                     <div className='col-xs-4'>

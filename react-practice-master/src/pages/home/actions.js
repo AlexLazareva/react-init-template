@@ -13,7 +13,7 @@ export function addTodo(todos, name) {
 
     let id = 1;
     if (todos.length) {
-        id = todos(todos.length - 1).id + 1;
+        id = todos[todos.length - 1].id + 1;
     }
     return {
         type: ADD_TODO,
