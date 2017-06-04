@@ -17,7 +17,12 @@ export default class ListPage extends React.Component {
     }
 
     renderItems(item, idx) {
-        return <ListItem key={ idx } />;
+        return (
+            <ListItem
+                key={ idx }
+                id={ item }
+            />
+        );
     }
 
     render() {

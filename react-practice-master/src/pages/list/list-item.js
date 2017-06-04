@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 export default class ListItem extends React.Component {
 
+    static propTypes = {
+        id: PropTypes.number.isRequired
+    };
+
     render() {
         return (
-            <div>
-               hello 1
-            </div>
+            <li>
+                <Link to={`/list/${ this.props.id }`}> Item {this.props.id}</Link>
+            </li>
         );
     }
 }
