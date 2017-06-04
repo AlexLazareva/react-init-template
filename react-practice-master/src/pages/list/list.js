@@ -27,11 +27,20 @@ export default class ListPage extends React.Component {
 
     render() {
         return (
-            <div>
-                <h3>List</h3>
-                <ul>
-                    { this.state.items.map(this.renderItems) }
-                </ul>
+            <div className='row'>
+                <div className='col-xs-12'>
+                    <h3>List</h3>
+                    <table className='table table-bordered table-hover'>
+                        <thead>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            { this.state.items.map(this.renderItems) }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         );
     }
