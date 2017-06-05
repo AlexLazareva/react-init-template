@@ -9,10 +9,6 @@ export default class ListPage extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-           // items:
-        };
-
         bindAll(this, ['renderItems']);
     }
 
