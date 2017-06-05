@@ -39,7 +39,7 @@ function listReducer(state = initialState, action) {
 }
 
 const ListReducer = {
-    list: ListReducer
+    list: listReducer
 };
 
 export default ListReducer;
