@@ -34,7 +34,8 @@ function listReducer(state = initialState, action) {
     switch (action.type) {
         case GET_ITEMS:
             return Object.assign({}, state);
-        default: state;
+        default:
+            return state;
     }
 }
 

@@ -12,7 +12,9 @@ export default class ListItem extends React.Component {
         return (
         <tr>
             <td>{this.props.id}</td>
-            <td><Link to={`/list/${ this.props.id }`}>{this.props.name}</Link></td>
+            <td>
+                <Link to={`/list/${ this.props.id }`}>{this.props.name}</Link>
+            </td>
             <td>
                 <button className='btn btn-success'>
                     <i className='glyphicon glyphicon-pencil'/>

@@ -14,7 +14,6 @@ export default class ItemDetails extends React.Component {
     }
 
     render() {
-
         return (
             <div>
                 <h1>Item details { this.state.id } works!</h1>
