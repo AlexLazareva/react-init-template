@@ -1,4 +1,4 @@
-import { GET_ITEMS } from './actions';
+//import { GET_ITEMS } from './actions';
 
 const initialState = {
     items: [
@@ -32,8 +32,6 @@ const initialState = {
 
 function listReducer(state = initialState, action) {
     switch (action.type) {
-        case GET_ITEMS:
-            return Object.assign({}, state);
         default:
             return state;
     }
