@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { bindAll } from 'lodash';
 import { store } from '../../index';
+import './styles.less';
 
 export default class ItemDetails extends React.Component {
     static propTypes = {
@@ -36,10 +37,20 @@ export default class ItemDetails extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Item details { this.state.id } works!</h1>
-                <p>name { this.state.name }</p>
-                <p>URL { this.state.youtube }</p>
+            <div className='row b-list-details'>
+                <div className='col-xs-12'>
+                    <div className='panel panel-primary'>
+                        <div className='panel-heading'>
+                            <b>{ this.state.id }</b> { this.state.name }
+                        </div>
+                        <div className='panel-body'>
+                            <iframe
+                                src={`https://www.youtube.com/embed/${ this.state.youtube }`}
+                                allowFullScreen
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
