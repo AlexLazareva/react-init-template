@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import {} from './reducers';
 
 class Modal extends React.Component {
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired,
+        modal: PropTypes.object.isRequired
+    };
 
     render() {
+        const { isOpen } = this.props.modal;
+
+        if (!isOpen) return null;
+
         return (
             <div className='modal fade'>
                 <div className='modal-dialog'>
