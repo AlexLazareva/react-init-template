@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import {} from './reducers';
 
 class Modal extends React.Component {
     static propTypes = {
@@ -43,5 +42,5 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps())(Modal);
+export default connect(mapStateToProps)(Modal);
 
