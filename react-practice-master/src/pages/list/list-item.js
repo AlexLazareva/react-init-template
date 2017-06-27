@@ -30,10 +30,10 @@ class ListItem extends React.Component {
                     <Link to={`/list/${ this.props.id }`}>{this.props.name}</Link>
                 </td>
                 <td>
-                    <button className='btn btn-success' onClick={ this.edit }>
+                    <button className='btn btn-success b-btn' onClick={ this.edit }>
                         <i className='glyphicon glyphicon-pencil'/>
                     </button>
-                    <button className='btn btn-danger'>
+                    <button className='btn btn-danger b-btn'>
                         <i className='glyphicon glyphicon-remove'/>
                     </button>
                 </td>
