@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import './styles.less';
+
 class Modal extends React.Component {
     static propTypes = {
         dispatch: PropTypes.func.isRequired,
@@ -13,7 +15,7 @@ class Modal extends React.Component {
         if (!isOpen) return null;
 
         return (
-            <div className='modal fade'>
+            <div className='modal fade in'>
                 <div className='modal-dialog'>
                     <div className='modal-content'>
                         <div className='modal-header'>
