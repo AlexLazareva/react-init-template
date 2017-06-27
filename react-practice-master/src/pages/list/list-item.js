@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import { openModal } from '../../components/modal/index';
+import EditModal from './edit-modal';
 
 class ListItem extends React.Component {
 
@@ -19,7 +20,12 @@ class ListItem extends React.Component {
     }
 
     edit() {
-        this.props.dispatch( openModal());
+        this.props.dispatch( openModal({
+            content: <EditModal />,
+            title: 'Редактировать',
+            btnText: 'Сохранить'
+        }
+        ));
     }
 
     render() {

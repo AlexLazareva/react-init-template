@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { closeModal } from './actions';
 
 import './styles.less';
 
@@ -9,8 +10,18 @@ class Modal extends React.Component {
         modal: PropTypes.object.isRequired
     };
 
+    constructor(props) {
+        super(props);
+
+        this.close = this.close.bind(this);
+    }
+
+    close() {
+        this.props.dispatch(closeModal());
+    }
+
     render() {
-        const { isOpen } = this.props.modal;
+        const { isOpen, title, btnText, content } = this.props.modal;
 
         if (!isOpen) return null;
 
@@ -19,17 +30,17 @@ class Modal extends React.Component {
                 <div className='modal-dialog'>
                     <div className='modal-content'>
                         <div className='modal-header'>
-                            <h5 className='modal-title'>Modal title</h5>
-                            <button type='button' className='close'>
+                            <h4 className='modal-title'>{ title }</h4>
+                            <button type='button' className='close' onClick={ this.close }>
                                 <span>&times;</span>
                             </button>
                         </div>
                         <div className='modal-body'>
-                            <p>Modal body text goes here.</p>
+                            { content }
                         </div>
                         <div className='modal-footer'>
-                            <button type='button' className='btn btn-primary'>Save changes</button>
-                            <button type='button' className='btn btn-secondary'>Close</button>
+                            <button type='button' className='btn btn-primary'>{ btnText }</button>
+                            <button type='button' className='btn btn-secondary' onClick={ this.close }>Закрыть</button>
                         </div>
                     </div>
                 </div>
