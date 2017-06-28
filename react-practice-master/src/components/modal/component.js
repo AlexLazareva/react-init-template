@@ -21,7 +21,7 @@ class Modal extends React.Component {
     }
 
     render() {
-        const { isOpen, title, btnText, content } = this.props.modal;
+        const { isOpen, title, content } = this.props.modal;
 
         if (!isOpen) return null;
 
@@ -35,13 +35,9 @@ class Modal extends React.Component {
                                 <span>&times;</span>
                             </button>
                         </div>
-                        <div className='modal-body'>
-                            { content }
-                        </div>
-                        <div className='modal-footer'>
-                            <button type='button' className='btn btn-primary'>{ btnText }</button>
-                            <button type='button' className='btn btn-secondary' onClick={ this.close }>Закрыть</button>
-                        </div>
+
+                        { content }
+
                     </div>
                 </div>
             </div>
