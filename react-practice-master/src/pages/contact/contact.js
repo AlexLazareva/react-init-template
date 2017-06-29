@@ -1,6 +1,8 @@
 import React from 'react';
 import { bindAll } from 'lodash';
+import is from 'is_js';
 import Input from '../../components/ui/input/index';
+import './styles.less';
 
 export default class ContactPage extends React.Component {
     
@@ -9,7 +11,14 @@ export default class ContactPage extends React.Component {
     constructor(props) {
         super(props);
 
-        bindAll(this, ['changeName', 'changeEmail', 'submit']);
+        this.state = {
+            name: '',
+            email: '',
+            errorName: '',
+            errorEmail: ''
+        };
+
+        bindAll(this, ['changeName', 'changeEmail', 'submit', '_isFormValid', '_isNameValid', '_isEmailValid']);
     }
 
     changeName(name) {
@@ -22,15 +31,67 @@ export default class ContactPage extends React.Component {
 
     submit(event) {
         event.preventDefault();
+
+        if (!this._isFormValid()) return;
+    }
+
+    _isFormValid() {
+        return this._isNameValid(this.state.name) && this._isEmailValid(this.state.email);
+    }
+
+    _isNameValid(name) {
+        let isValid = true;
+        let errorName = '';
+
+        if (name === '') {
+            errorName = 'Поле не может быть пустым';
+            isValid = false;
+        }
+
+        if (name.length < 3) {
+            errorName = 'Длина не может быть меньше 3-х символов';
+            isValid = false;
+        }
+
+        this.setState({ errorName });
+        return isValid;
+    }
+
+    _isEmailValid(email) {
+        let isValid = true;
+        let errorEmail = '';
+
+        if (email === '') {
+            errorEmail = 'Поле не может быть пустым';
+            isValid = false;
+        }
+
+        if (!is.email(email)) {
+            errorEmail = 'Поле должно быть email';
+            isValid = false;
+        }
+
+        this.setState({ errorEmail });
+        return isValid;
     }
     
     render() {
         return (
             <form className='b-contact'>
                 <h4>Имя: </h4>
-                <Input onChange={ this.changeName } value={ this.state.name } />
+                <Input
+                    onChange={ this.changeName }
+                    value={ this.state.name }
+                    error={ this.state.errorName }
+                />
+
                 <h4>Email: </h4>
-                <Input onChange={ this.changeEmail } value={ this.state.email } />
+                <Input
+                    onChange={ this.changeEmail }
+                    value={ this.state.email }
+                    error={ this.state.errorEmail }
+                />
+
                 <button type='submit' onClick={ this.submit }>Сохранить</button>
             </form>
         );
