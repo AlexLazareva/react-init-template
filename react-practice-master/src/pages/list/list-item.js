@@ -4,7 +4,8 @@ import { Link } from 'react-router';
 
 import { openModal } from '../../components/modal/index';
 import EditModal from './modals/edit-modal';
-import { editItem } from './actions';
+import DeleteModal from './modals/delete-modal';
+import { editItem, deleteItem } from './actions';
 
 class ListItem extends React.Component {
 
@@ -19,6 +20,7 @@ class ListItem extends React.Component {
         super(props);
 
         this.edit = this.edit.bind(this);
+        this.remove = this.remove.bind(this);
     }
 
     edit() {
@@ -26,8 +28,15 @@ class ListItem extends React.Component {
         this.props.dispatch( openModal({
             content: <EditModal id={ id } name={ name } youtube={ youtube } onSave={ editItem } />,
             title: 'Редактировать'
-            }
-        ));
+        }) );
+    }
+
+    remove() {
+        const { id, name } = this.props;
+        this.props.dispatch( openModal({
+            content: <DeleteModal id={ id } name={ name } onSuccess={ deleteItem } />,
+            title: 'Удалить элемент'
+        }) );
     }
 
     render() {
@@ -41,7 +50,7 @@ class ListItem extends React.Component {
                     <button className='btn btn-success b-btn' onClick={ this.edit }>
                         <i className='glyphicon glyphicon-pencil'/>
                     </button>
-                    <button className='btn btn-danger b-btn'>
+                    <button className='btn btn-danger b-btn' onClick={ this.remove }>
                         <i className='glyphicon glyphicon-remove'/>
                     </button>
                 </td>

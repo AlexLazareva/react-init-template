@@ -15,11 +15,12 @@ class DeleteModal extends React.Component {
     constructor(props) {
         super(props);
 
-        bindAll(this, ['cancel', 'delete']);
+        bindAll(this, ['cancel', 'deleteItem']);
     }
 
-    delete() {
+    deleteItem() {
         this.props.dispatch( this.props.onSuccess(this.props.id) );
+        this.cancel();
     }
 
     cancel() {
@@ -30,10 +31,10 @@ class DeleteModal extends React.Component {
         return (
             <div>
                 <div className='modal-body'>
-                    <p>Вы действительно хотите удалить <b>{this.props.id}</b> - {this.props.name}?</p>
+                    <p><b>{this.props.id}</b> - {this.props.name}</p>
                 </div>
                 <div className='modal-footer'>
-                    <button className='btn btn-danger' onClick={this.delete}>Удалить</button>
+                    <button className='btn btn-danger' onClick={this.deleteItem}>Удалить</button>
                     <button className='btn btn-default' onClick={this.cancel}>Отмена</button>
                 </div>
             </div>
