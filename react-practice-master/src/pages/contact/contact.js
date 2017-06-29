@@ -40,21 +40,22 @@ export default class ContactPage extends React.Component {
     }
 
     _isNameValid(name) {
-        let isValid = true;
         let errorName = '';
 
         if (name === '') {
             errorName = 'Поле не может быть пустым';
-            isValid = false;
+            this.setState({ errorName });
+            return false;
         }
 
         if (name.length < 3) {
             errorName = 'Длина не может быть меньше 3-х символов';
-            isValid = false;
+            this.setState({ errorName });
+            return false;
         }
 
         this.setState({ errorName });
-        return isValid;
+        return true;
     }
 
     _isEmailValid(email) {
@@ -77,23 +78,27 @@ export default class ContactPage extends React.Component {
     
     render() {
         return (
-            <form className='b-contact'>
-                <h4>Имя: </h4>
-                <Input
-                    onChange={ this.changeName }
-                    value={ this.state.name }
-                    error={ this.state.errorName }
-                />
+            <div className='row'>
+                <div className='col-xs-6'>
+                    <form className='b-contact'>
+                        <h4>Имя: </h4>
+                        <Input
+                            onChange={ this.changeName }
+                            value={ this.state.name }
+                            error={ this.state.errorName }
+                        />
 
-                <h4>Email: </h4>
-                <Input
-                    onChange={ this.changeEmail }
-                    value={ this.state.email }
-                    error={ this.state.errorEmail }
-                />
+                        <h4>Email: </h4>
+                        <Input
+                            onChange={ this.changeEmail }
+                            value={ this.state.email }
+                            error={ this.state.errorEmail }
+                        />
 
-                <button type='submit' onClick={ this.submit }>Сохранить</button>
-            </form>
+                        <button type='submit' className='btn btn-primary' onClick={ this.submit }>Сохранить</button>
+                    </form>
+                </div>
+            </div>
         );
     }
     
