@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 import { bindAll } from 'lodash';
 import { connect } from 'react-redux';
 
-import { closeModal } from '../../components/modal/index';
-import Input from '../../components/ui/input/index';
+import { closeModal } from '../../../components/modal/index';
+import Input from '../../../components/ui/input/index';
 
 class EditModal extends React.Component {
     static propTypes = {

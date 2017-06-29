@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import { openModal } from '../../components/modal/index';
-import EditModal from './edit-modal';
+import EditModal from './modals/edit-modal';
 import { editItem } from './actions';
 
 class ListItem extends React.Component {
