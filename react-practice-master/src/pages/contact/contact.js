@@ -59,21 +59,22 @@ export default class ContactPage extends React.Component {
     }
 
     _isEmailValid(email) {
-        let isValid = true;
         let errorEmail = '';
 
         if (email === '') {
             errorEmail = 'Поле не может быть пустым';
-            isValid = false;
+            this.setState({ errorEmail });
+            return false;
         }
 
         if (!is.email(email)) {
             errorEmail = 'Поле должно быть email';
-            isValid = false;
+            this.setState({ errorEmail });
+            return false;
         }
 
         this.setState({ errorEmail });
-        return isValid;
+        return true;
     }
     
     render() {
