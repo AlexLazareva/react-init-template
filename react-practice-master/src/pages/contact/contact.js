@@ -8,11 +8,11 @@ import Input from '../../components/ui/input/index';
 import './styles.less';
 
 class ContactPage extends React.Component {
+    static path = '/contact';
+
     static propTypes = {
         dispatch: PropTypes.func.isRequired
-    }
-    
-    static path = '/contact';
+    };
 
     constructor(props) {
         super(props);
