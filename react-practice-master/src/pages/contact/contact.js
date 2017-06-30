@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { bindAll } from 'lodash';
 import is from 'is_js';
+
+import { submitForm } from './actions';
 import Input from '../../components/ui/input/index';
 import './styles.less';
 
-export default class ContactPage extends React.Component {
+class ContactPage extends React.Component {
+    static propTypes = {
+        dispatch: PropTypes.func.isRequired
+    }
     
     static path = '/contact';
 
@@ -33,6 +39,12 @@ export default class ContactPage extends React.Component {
         event.preventDefault();
 
         if (!this._isFormValid()) return;
+
+        this.props.dispatch( submitForm(this.state.name, this.state.email) );
+        this.setState({
+            name: '',
+            email: ''
+        });
     }
 
     _isFormValid() {
@@ -104,3 +116,9 @@ export default class ContactPage extends React.Component {
     }
     
 }
+
+function mapStateToProps(state) {
+    return {};
+}
+
+export default connect(mapStateToProps)(ContactPage);
