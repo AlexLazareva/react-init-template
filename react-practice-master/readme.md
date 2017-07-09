@@ -5,7 +5,7 @@
 3. Run `npm run prod` to start production mode
 4. Run `npm run lint` to start eslint
 
-###Dependencies
+### Dependencies
 * react: 15.3.0,
 * react-dom: 15.3.0,
 * react-redux: ^4.4.5,
@@ -19,7 +19,7 @@
 * is_js: ^0.9.0,
 * lodash: ^4.15.0
 
-###devDependencies
+### devDependencies
 * autoprefixer-loader: "^3.2.0",
 * babel-core: "^6.13.2",
 * babel-eslint: "^6.1.2",
@@ -43,5 +43,5 @@
 * webpack: "^1.13.1",
 * webpack-dev-server: "^1.14.1"
 
-###Tests
+### Tests
 
